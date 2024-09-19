@@ -15,17 +15,17 @@ The NL2SWRL is an LLM-based framework for translating rule in natural language (
 ![methodology (1)](https://github.com/user-attachments/assets/4cec711b-afbe-4049-b34b-c2cb3f64f29e)
 
 ### Phase 1
-In this phase, the framework utilizes all the available compeonets i.e., RAG (ontology concepts) and prompt engineering (list of examples, list of guidelines)
+In this phase, the framework utilizes all the available compeonets i.e., RAG (ontology concepts) and prompt engineering (list of examples, list of guidelines).
 The prompt template is the following:
 ![phase_1](https://github.com/user-attachments/assets/2eb31369-537c-4779-bae3-2aeb6d1dc6a5)
 
 ### Phase 2
-In the second phase, the framework utilizes only the RAG component (ontology concepts)
+In the second phase, the framework utilizes only the RAG component (ontology concepts).
 The prompt template is the following:
 ![phase_2](https://github.com/user-attachments/assets/f5105d88-a8fb-4903-b74e-45d2fa077fe1)
 
 ### Phase 3
-In the third phase, the framework does not use any component
+In the third phase, the framework does not use any component.
 The prompt template is the following:
 ![phase_3](https://github.com/user-attachments/assets/b9a34553-19ef-4df8-b147-d478a88ac3bb)
 
