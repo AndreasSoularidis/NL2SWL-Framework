@@ -28,6 +28,7 @@ The NL2SWRL is an LLM-based framework for translating rule in natural language (
 For the detailed results see here
 
 ### Example
+```
 Act as an ontology engineer. Use the following content (examples, part of the ontology, and common mistakes) as a guide to translate the natural language rule you are given into a SWRL rule. 
     EXAMPLES
 
@@ -54,7 +55,6 @@ Act as an ontology engineer. Use the following content (examples, part of the on
     END OF EXAMPLES
 
     PART OF ONTOLOGY 
-```rdf
 ###http://example.org/fire_rescue_ontology#isRecognizedAt :isRecognizedAt rdf:type owl:ObjectProperty ; rdfs:domain :Fire , :Gas , :House ; rdfs:range :Coordinates ; rdfs:comment "Indicates that an entity is recognized at specific coordinates." ; rdfs:label "is Recognized At" .
 
 ###  ### http://example.org/fire_rescue_ontology#sendTo
