@@ -1,5 +1,5 @@
 # NL2SWL-Framework
-LLM-assisted generation of SWRL rules from natural language: a GLUON-driven approach
+LLM-assisted generation of SWRL rules from natural language
 
 ## What is NL2SWRL
 The NL2SWRL is an LLM-based framework for translating rule in natural language (NL) into Semantic Web Rule Language (SWRL).
