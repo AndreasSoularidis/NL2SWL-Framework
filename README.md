@@ -5,7 +5,7 @@ LLM-assisted generation of SWRL rules from natural language
 The NL2SWRL is an LLM-based framework for translating rule in natural language (NL) into Semantic Web Rule Language (SWRL).
 
 ## Research Methodology
-### Utilized (Experimental - Toy) Ontology
+### Utilized (Experimental) Ontology
 
 ### Rules in Natural Language following the template-driven approach
 ⦁	Rule 1: IF Gas Is Recognized At Coordinates AND Fire Is Recognized At Coordinates AND Agents Is Nearby to Coordinates THEN Send Alert to Agents AND Agents Abort Mission.
