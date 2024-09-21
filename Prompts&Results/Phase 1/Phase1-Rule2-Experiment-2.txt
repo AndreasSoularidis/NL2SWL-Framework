@@ -1,0 +1,101 @@
+Act as an ontology engineer. Use the following content (examples, part of the ontology, and common mistakes) as a guide to translate the natural language rule you are given into a SWRL rule. 
+    EXAMPLES
+
+    Example 1
+    Rule in natural language: IF a Person Has a Sibling who Is a Man, THEN the Person Has a Brother.
+    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s) -> hasBrother(?p, ?s)
+
+    Example 2
+    Rule in natural language: IF a Person Has a Phone Number that starts with '+', THEN the Person Has an International Phone Number.
+    SWRL rule: Person(?p) ^ PhoneNumber(?number) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, "+") -> hasInternationalPhoneNumber(?p, true)
+
+    Example 3
+    Rule in natural language:  IF a Person Has an Age greater than 17, THEN the Person is an Adult and Has IdCard.
+    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)
+
+    Example 4
+    Rule in natural language:  IF a Publication Has two different Authors, THEN those Authors have Cooperated With each other.
+    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)
+
+    Example 5
+    Rule in natural language: IF a Researcher Has Published more than 10 papers in a Top-Tier Conference, THEN the Researcher is a Prominent Researcher and Has a High Citation Impact.
+    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?p) ^ Conference(?p) ^ topTierConference(?p) ^ swrlb:greaterThan(count(?p), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r)
+
+    END OF EXAMPLES
+
+    PART OF ONTOLOGY 
+
+    :Coordinates4 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#Coordinates5
+
+:Coordinates5 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#Coordinates6
+
+:Coordinates6 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#Coordinates7
+
+:Coordinates7 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#Coordinates8
+
+:Coordinates8 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#DroneAgent1 :DroneAgent1 rdf:type owl:NamedIndividual , :FlyingDroneAgent ; rdfs:comment "A specific flying drone agent." ; rdfs:label "Drone Agent 1" .
+
+###  http://example.org/fire_rescue_ontology#isRecognizedAt :isRecognizedAt rdf:type owl:ObjectProperty ; rdfs:domain :Fire , :Gas , :House ; rdfs:range :Coordinates ; rdfs:comment "Indicates that an entity is recognized at specific coordinates." ; rdfs:label "is Recognized At" .
+
+###  http://example.org/fire_rescue_ontology#sendAlert
+
+:sendAlert rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Alert ;
+
+rdfs:range :Agent ,
+
+:FireStation ;
+
+rdfs:label "send Alert" .
+
+###  http://example.org/fire_rescue_ontology#sendTo
+
+:sendTo rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Agent ;
+
+rdfs:range :Coordinates ;
+
+rdfs:label "send To" .
+
+###  http://example.org/fire_rescue_ontology#hasCoordinates :hasCoordinates rdf:type owl:ObjectProperty ; rdfs:domain :Fire , :House , :Location ; rdfs:range :Coordinates ; rdfs:comment "Specifies the coordinates of an entity." ; rdfs:label "has Coordinates" .
+
+###  http://example.org/fire_rescue_ontology#hasParticipants
+
+:hasParticipants rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Mission ;
+
+rdfs:range :Agent ;
+
+rdfs:label "has Participants" .
+
+###  http://example.org/fire_rescue_ontology#isNearby :isNearby rdf:type owl:ObjectProperty ; rdfs:domain :Agent ; rdfs:range :Coordinates ; rdfs:comment "Indicates that an entity is nearby specific coordinates." ; rdfs:label "is Nearby" .
+
+    END OF ONTOLOGY
+
+    COMMON GUIDELINES
+
+    Please try to implement the following guidelines:
+    1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. 
+    2: Each atom must have exactly one variable if it represents class.
+    3: Each atom must have exactly two variables if it represents object property.
+    4: Each concept must be represented by a class and must be present in Conditions.
+
+    END OF COMMON GUIDELINES
+
+    The rule in natural language is the following: IF a Person Is Recognized At Coordinates AND Has Heart Rate less than 30 pulses per minute AND the Location in Coordinates Is Safe THEN Send To coordinates a Search and Rescue Team.
+    Give only the final SWRL rule
+Response
+Person(?p) ^ Coordinates(?c) ^ isRecognizedAt(?p, ?c) ^ hasHeartRate(?p, ?hr) ^ swrlb:lessThan(?hr, 30) ^ Location(?loc) ^ hasCoordinates(?loc, ?c) ^ isSafe(?loc, true) ^ SearchAndRescueTeam(?srt) -> sendTo(?srt, ?c)

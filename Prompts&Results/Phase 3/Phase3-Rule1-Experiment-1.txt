@@ -1,0 +1,6 @@
+Prompt
+  Act as an ontology engineer. Translate the natural language rule you are given into a SWRL rule.
+    The rule in natural language is the following: IF Gas Is Recognized At Coordinates AND Fire Is Recognized At Coordinates AND Agents Is Nearby to Coordinates THEN Send Alert to Agents AND Agents Abort Mission.
+    Give only the final SWRL rule
+Response
+Gas(?g) ^ Fire(?f) ^ hasCoordinates(?g, ?c) ^ hasCoordinates(?f, ?c) ^ Agent(?a) ^ isNearby(?a, ?c) -> SendAlert(?a) ^ AbortMission(?a)

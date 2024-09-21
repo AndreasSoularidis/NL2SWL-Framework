@@ -1,0 +1,5 @@
+Act as an ontology engineer. Translate the natural language rule you are given into a SWRL rule.
+    The rule in natural language is the following: IF a Person Is Recognized At Coordinates AND Has Heart Rate less than 30 pulses per minute AND the Location in Coordinates Is Safe THEN Send To coordinates a Search and Rescue Team.
+    Give only the final SWRL rule
+Response
+Person(?p) ^ RecognizedAtCoordinates(?p, ?c) ^ HasHeartRate(?p, ?hr) ^ swrlb:lessThan(?hr, 30) ^ Location(?loc) ^ Coordinates(?loc, ?c) ^ IsSafe(?loc, true) -> SendSearchAndRescueTeam(?c)

@@ -1,0 +1,56 @@
+Prompt
+  Act as an ontology engineer. Use the following content (part of the ontology) as a guide to translate the natural language rule you are given into a SWRL rule. 
+    PART OF ONTOLOGY 
+
+    ###  http://example.org/fire_rescue_ontology#isRecognizedAt :isRecognizedAt rdf:type owl:ObjectProperty ; rdfs:domain :Fire , :Gas , :House ; rdfs:range :Coordinates ; rdfs:comment "Indicates that an entity is recognized at specific coordinates." ; rdfs:label "is Recognized At" .
+
+###  http://example.org/fire_rescue_ontology#sendAlert
+
+:sendAlert rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Alert ;
+
+rdfs:range :Agent ,
+
+:FireStation ;
+
+rdfs:label "send Alert" .
+
+###  http://example.org/fire_rescue_ontology#sendTo
+
+:sendTo rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Agent ;
+
+rdfs:range :Coordinates ;
+
+rdfs:label "send To" .
+
+###  http://example.org/fire_rescue_ontology#House1 :House1 rdf:type owl:NamedIndividual , :House ; :hasCoordinates :Coordinates1 ; rdfs:comment "A specific house that is on fire." ; rdfs:label "House 1" .
+
+###  http://example.org/fire_rescue_ontology#Person1 :Person1 rdf:type owl:NamedIndividual , :Person ; :hasCoordinates :Coordinates2 ; :hasHeartRate 75 ; rdfs:comment "A specific individual." ; rdfs:label "Person 1" .
+
+###  http://example.org/fire_rescue_ontology#RescueTeam1 :RescueTeam1 rdf:type owl:NamedIndividual , :SearchAndRescueTeam ; rdfs:comment "A specific search and rescue team." ; rdfs:label "Rescue Team 1" .
+
+###  http://example.org/fire_rescue_ontology#Alert
+
+:Alert rdf:type owl:Class ;
+
+rdfs:comment "Alerts for decision
+
+makers and agents" ;
+
+rdfs:label "Alert" .
+
+###  http://example.org/fire_rescue_ontology#Coordinates :Coordinates rdf:type owl:Class ; rdfs:comment "Represents latitude and longitude coordinates." ; rdfs:label "Coordinates" .
+
+###  http://example.org/fire_rescue_ontology#Fire :Fire rdf:type owl:Class ; rdfs:comment "Represents the presence of fire at specific coordinates." ; rdfs:label "Fire" .
+
+###  http://example.org/fire_rescue_ontology#FireStation :FireStation rdf:type owl:Class ; rdfs:comment "Represents a fire station." ; rdfs:label "Fire Station" .
+
+    END OF ONTOLOGY
+
+    The rule in natural language is the following: IF House On Fire Is Recognized At Coordinates AND Person has Voice Sign 'help' THEN Send Alert to the Fire Station AND Send To coordinates a Search and Rescue Team  AND Send To coordinates a Flying Drone Agent AND Send To coordinates a Spot Robot Agent.
+    Give only the final SWRL rule
+Response
+House(?h) ^ Fire(?f) ^ isRecognizedAt(?f, ?c) ^ hasCoordinates(?h, ?c) ^ Person(?p) ^ hasVoiceSign(?p, "help")-> Alert(?a) ^ sendAlert(?a, FireStation) ^ sendTo(RescueTeam1, ?c) ^ sendTo(FlyingDroneAgent, ?c) ^ sendTo(SpotRobotAgent, ?c)

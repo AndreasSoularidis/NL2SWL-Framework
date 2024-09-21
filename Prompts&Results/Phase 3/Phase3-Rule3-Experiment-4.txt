@@ -1,0 +1,5 @@
+Act as an ontology engineer. Translate the natural language rule you are given into a SWRL rule.
+    The rule in natural language is the following: IF House On Fire Is Recognized At Coordinates AND Person has Voice Sign 'help' THEN Send Alert to the Fire Station AND Send To coordinates a Search and Rescue Team  AND Send To coordinates a Flying Drone Agent AND Send To coordinates a Spot Robot Agent.
+    Give only the final SWRL rule
+Response
+HouseOnFire(?h) ^ RecognizedAtCoordinates(?h, ?c) ^ Person(?p) ^ hasVoiceSign(?p, "help") -> SendAlertToFireStation(?h) ^ SendSearchAndRescueTeamToCoordinates(?c) ^ SendFlyingDroneAgentToCoordinates(?c) ^ SendSpotRobotAgentToCoordinates(?c)

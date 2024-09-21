@@ -1,0 +1,68 @@
+Prompt	
+  Act as an ontology engineer. Use the following content (part of the ontology) as a guide to translate the natural language rule you are given into a SWRL rule. 
+    PART OF ONTOLOGY 
+
+    :Coordinates4 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#Coordinates5
+
+:Coordinates5 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#Coordinates6
+
+:Coordinates6 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#Coordinates7
+
+:Coordinates7 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#Coordinates8
+
+:Coordinates8 rdf:type owl:NamedIndividual .
+
+###  http://example.org/fire_rescue_ontology#DroneAgent1 :DroneAgent1 rdf:type owl:NamedIndividual , :FlyingDroneAgent ; rdfs:comment "A specific flying drone agent." ; rdfs:label "Drone Agent 1" .
+
+###  http://example.org/fire_rescue_ontology#isRecognizedAt :isRecognizedAt rdf:type owl:ObjectProperty ; rdfs:domain :Fire , :Gas , :House ; rdfs:range :Coordinates ; rdfs:comment "Indicates that an entity is recognized at specific coordinates." ; rdfs:label "is Recognized At" .
+
+###  http://example.org/fire_rescue_ontology#sendAlert
+
+:sendAlert rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Alert ;
+
+rdfs:range :Agent ,
+
+:FireStation ;
+
+rdfs:label "send Alert" .
+
+###  http://example.org/fire_rescue_ontology#sendTo
+
+:sendTo rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Agent ;
+
+rdfs:range :Coordinates ;
+
+rdfs:label "send To" .
+
+###  http://example.org/fire_rescue_ontology#hasCoordinates :hasCoordinates rdf:type owl:ObjectProperty ; rdfs:domain :Fire , :House , :Location ; rdfs:range :Coordinates ; rdfs:comment "Specifies the coordinates of an entity." ; rdfs:label "has Coordinates" .
+
+###  http://example.org/fire_rescue_ontology#hasParticipants
+
+:hasParticipants rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Mission ;
+
+rdfs:range :Agent ;
+
+rdfs:label "has Participants" .
+
+###  http://example.org/fire_rescue_ontology#isNearby :isNearby rdf:type owl:ObjectProperty ; rdfs:domain :Agent ; rdfs:range :Coordinates ; rdfs:comment "Indicates that an entity is nearby specific coordinates." ; rdfs:label "is Nearby" .
+
+    END OF ONTOLOGY
+
+    The rule in natural language is the following: IF a Person Is Recognized At Coordinates AND Has Heart Rate less than 30 pulses per minute AND the Location in Coordinates Is Safe THEN Send To coordinates a Search and Rescue Team.
+    Give only the final SWRL rule
+Response
+Person(?p) ^ isRecognizedAt(?p, ?c) ^ hasHeartRate(?p, ?hr) ^ swrlb:lessThan(?hr, 30) ^ Location(?loc) ^ hasCoordinates(?loc, ?c) ^ isSafe(?loc, true) -> sendTo(SearchAndRescueTeam, ?c)
