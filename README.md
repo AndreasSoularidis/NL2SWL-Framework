@@ -201,7 +201,12 @@ Give only the final SWRL rule
   
 ```
 
+#### Important
+Starting October 2nd, 2024, gpt-4o will point to the gpt-4o-2024-08-06 snapshot [Link Text](https://platform.openai.com/docs/models/gpt-4o)
+
+
 ## Guick Install
+Python 3.10
 For Windows
 ```bash
 py -m venv .venv
